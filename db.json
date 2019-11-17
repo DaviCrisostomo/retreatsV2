@@ -3,13 +3,13 @@
 "id": 1,
 "date": {
 "arrival": "2019-12-22",
-"departure": "2019-12-30", 
+"departure": "2019-12-30" 
 },
-oio
+
 "location": {
 "country": "England",
 "city": "London",
-"address": "Here, there and everywhere",
+"address": "Here, there and everywhere"
 },
 
 "contacts": [
@@ -17,7 +17,7 @@ oio
 "id": 1,
 "name": "John",
 "email": "McCartney",
-"phone": "5371438",
+"phone": "5371438"
 }
 ],
 
