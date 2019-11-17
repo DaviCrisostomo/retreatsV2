@@ -16,7 +16,6 @@
 
 "contacts": [
 {
-"id": 1,
 "name": "John",
 "email": "McCartney",
 "phone": "5371438"
@@ -25,7 +24,6 @@
 
 "rooms":[
 {
-"id": 1,
 "couple": false,
 "beds":3,
 "books": 1, 
