@@ -1,0 +1,32 @@
+{
+"id": 1,
+"date": {
+"arrival": "2019-12-22",
+"departure": "2019-12-30", 
+},
+
+location: {
+"country": "England",
+"city": "London",
+"address": "Here, there and everywhere",
+},
+
+contacts: [
+{
+"id": 1
+"name": "John",
+"email": "McCartney",
+"phone": "5371438",
+}
+],
+
+rooms:[
+{
+"id": 1,
+"couple": false,
+"beds":3,
+"books": 1, 
+"price": 75,00
+}
+]
+}
