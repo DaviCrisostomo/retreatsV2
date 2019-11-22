@@ -60,9 +60,8 @@ function deleteRetreat(id){
 }
 
 module.exports={
-    getRetreats,
     getRetreat,
-    
+    getRetreats,
     insertRetreat,
     updateRetreat,
     deleteRetreat
