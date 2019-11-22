@@ -1,5 +1,20 @@
 const fs = require('fs')
 
+const newDate = () => new Date().toString()
+
+function mustBeInArray(array, id) {
+    return new Promise((resolve, reject) => {
+        const row = array.find(r => r.id == id)
+        if (!row) {
+            reject({
+                message: 'Wrong ID',
+                status: 404
+            })
+        }
+        resolve(row)
+    })
+}
+
 const generateNewId = (array) => {
     if (array.length > 0) {
         return array[array.length - 1].id + 1
