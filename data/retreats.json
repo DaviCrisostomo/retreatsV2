@@ -1,0 +1,34 @@
+[
+{
+"id": "integer",
+"date": {
+"arrival": "String",
+"departure": "String"
+},
+
+"location": {
+"country": "String",
+"city": "String",
+"address": "String"
+},
+
+"contacts": [
+{
+"id": "integer",
+"name": "String",
+"email": "String",
+"phone": "String"
+}
+],
+
+"rooms":[
+{
+"id": "integer",
+"couple": "boolean",
+"beds":"integer",
+"books": "integer", 
+"price": "decimal"
+}
+]
+}
+]
