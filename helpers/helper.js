@@ -43,6 +43,8 @@ function writeJSONFile(filename, content) {
         }
     })
 }module.exports = {
+    newDate,
+    mustBeInArray,
     generateNewId,
     searchingById,
     writeJSONFile
