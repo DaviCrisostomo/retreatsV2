@@ -1,34 +1,78 @@
-[
-{
-"id": "integer",
-"date": {
-"arrival": "String",
-"departure": "String"
-},
 
-"location": {
-"country": "String",
-"city": "String",
-"address": "String"
-},
-
-"contacts": [
 {
-"id": "integer",
-"name": "String",
-"email": "String",
-"phone": "String"
-}
-],
-
-"rooms":[
-{
-"id": "integer",
-"couple": "boolean",
-"beds":"integer",
-"books": "integer", 
-"price": "decimal"
-}
-]
-}
-]
+    "retreats": [
+      {
+    "id": 1,
+    "date": {
+    "arrival": "2019-12-22",
+    "departure": "2019-12-30" 
+    },
+    
+    "location": {
+    "country": "England",
+    "city": "London",
+    "address": "Here, there and everywhere"
+    },
+    
+    "contacts": [
+    {
+    "name": "John",
+    "email": "McCartney",
+    "phone": "5371438"
+    }
+    ],
+    
+    "rooms":[
+    {
+    "couple": false,
+    "beds":3,
+    "books": 1, 
+    "price": 75.00
+    }
+    ]
+    },
+       {
+    "id": 2,
+    "date": {
+    "arrival": "2020-01-10",
+    "departure": "2020-01-18" 
+    },
+    
+    "location": {
+    "country": "Ireland",
+    "city": "Dublin",
+    "address": "53 Bulfin Road, Inchicore"
+    },
+    
+    "contacts": [
+    {
+    "name": "Davis",
+    "email": "McCrisostomus",
+    "phone": "8304022"
+    }
+    ],
+    
+    "rooms":[
+    {
+    "couple": false,
+    "beds":3,
+    "books": 1, 
+    "price": 45.00
+    },
+      {
+    "couple": true,
+    "beds":1,
+    "books": 0, 
+    "price": 65.50
+    },
+        {
+    "couple": false,
+    "beds":4,
+    "books": 2, 
+    "price": 35.50
+    }
+    ]
+    }
+      ]
+    }
+    
