@@ -1,6 +1,8 @@
 const filename = '../data/retreats.json'
 let retreats = require(filename)
 const helper = require('../helpers/helper')
+const jsonPath = './data/retreats.json'
+
 
 function getRetreats(){
     return new Promise((resolve, reject)=>{
@@ -16,32 +18,35 @@ function getRetreats(){
 
 function getRetreat(id){
     return new Promise ((resolve, reject)=>{
-        helper.mustBeInArray(retreats, id)
+        helper.searchingById(retreats, id)
         .then(retreat=>resolve(retreat))
         .catch(err => reject(err))
     })
 }
 
 function insertRetreat(newRetreat){
-     return new Promise((resolve, reject) => {
-        const id = { id: helper.generateNewId(posts) }
     
+     return new Promise((resolve, reject) => {
+        const id = { id: helper.generateNewId(retreats) }
+        
         newRetreat = { ...id, ...newRetreat }
+       
         retreats.push(newRetreat)
-        helper.writeJSONFile(filename, retreats)
+    
+       helper.writeJSONFile(jsonPath, retreats)
         resolve(newRetreat)
     })
 }
 
 function updateRetreat(id, newRetreat){
      return new Promise((resolve, reject) => {
-        helper.mustBeInArray(retreats, id)
+        helper.searchingById(retreats, id)
         .then(retreat => {
             const index = retreats.findIndex(r => r.id == retreat.id)
             id = { id: retreat.id }
              
-            posts[index] = { ...id,...newPost }
-            helper.writeJSONFile(filename, retreats)
+            retreats[index] = { ...id,...newRetreat }
+            helper.writeJSONFile(jsonPath, retreats)
             resolve(retreats[index])
         })
         .catch(err => reject(err))
@@ -49,10 +54,10 @@ function updateRetreat(id, newRetreat){
 }
 function deleteRetreat(id){
     return new Promise((resolve, reject) => {
-        helper.mustBeInArray(retreats, id)
+        helper.searchingById(retreats, id)
         .then(() => {
-            retreats = retreats.filter(r => r.id !== id)
-            helper.writeJSONFile(filename, retreats)
+            retreats = retreats.filter(r => r.id != id)
+            helper.writeJSONFile(jsonPath, retreats)
             resolve()
         })
         .catch(err => reject(err))
