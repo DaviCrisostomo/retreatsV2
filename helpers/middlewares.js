@@ -35,8 +35,11 @@ function validateEmail(req, res, next) {
 }
 
 function checkRequiredFields(req, res, next) {
-    const { date, location, contacts } = req.body
+
+    const {date, location, contacts} = req.body
+   
     if (date.arrival && date.departure && location && contacts) {
+      
         next()
     } else {
         res.status(400).json({ message: 'Required fields can\'t be null' })
