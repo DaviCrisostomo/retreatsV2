@@ -49,5 +49,7 @@ function checkRequiredFields(req, res, next) {
 
 module.exports = {
     integerChecker,
-    checkRequiredFields
+    checkRequiredFields,
+    validateEmail,
+    dateValidation
 }
