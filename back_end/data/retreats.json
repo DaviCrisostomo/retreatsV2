@@ -21,7 +21,7 @@
             {
                 "couple": false,
                 "beds": 3,
-                "books": 1,
+                "bookings": 1,
                 "price": 75
             }
         ]
@@ -48,19 +48,19 @@
             {
                 "couple": false,
                 "beds": 3,
-                "books": 1,
+                "bookings": 1,
                 "price": 45
             },
             {
                 "couple": true,
                 "beds": 1,
-                "books": 0,
+                "bookings": 0,
                 "price": 65.5
             },
             {
                 "couple": false,
                 "beds": 4,
-                "books": 2,
+                "bookings": 2,
                 "price": 35.5
             }
         ]
@@ -87,7 +87,7 @@
             {
                 "couple": false,
                 "beds": 3,
-                "books": 1,
+                "bookings": 1,
                 "price": 75
             }
         ]
