@@ -38,9 +38,14 @@ function getRetreat(id){
         div.innerHTML = `<div class="card col-4 m-1 mx-auto">
         <img class="card-img-top" src="img/_meditation.png" />
         <div class="card-body">
-            <h5 class="card-title">${retreat.location.city+"-"+retreat.location.country}</h5>
-            <p class="card-info">${"From "+retreat.date.arrival+" to "+retreat.date.departure}</p>
-        </div>
+            <h3 class="card-title">${retreat.location.city+"-"+retreat.location.country}</h3>
+            <h6 class="card-info">${"From "+retreat.date.arrival+" to "+retreat.date.departure}</p>
+            <form>
+            <h5>Room 1 €${retreat.rooms[0].price}</h533>
+            Total beds:${retreat.rooms[0].beds}</br>
+            Beds available in this room: ${retreat.rooms[0].beds - retreat.rooms[0].bookings}</br>
+            <input type="number" name="quantity" min="0" max=${retreat.rooms[0].beds - retreat.rooms[0].bookings}>
+            </form>
         </div>`
     })
     .catch((error) => {
@@ -59,6 +64,8 @@ function updateRetreat(retreat) {
         body: formData
     }).then(response => response.json())
 }
+
+
 /*
 createNewProfile(profile)
    .then((json) => {
