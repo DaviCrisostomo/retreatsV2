@@ -1,0 +1,13 @@
+#room-table{
+    width:100%;  
+   
+  
+    font-family:Helvetica;
+  }
+
+#calculate-button{
+ 
+    position:relative;
+left:    0;
+bottom:   0;
+  }

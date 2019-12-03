@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,14 +60,105 @@
     </div>
   </div>
 
-  <div class="row" id="cardDiv">
-  
-  </div>
+ <!-- <div class="row" id="cardDiv"></div>-->
+ 
+ <div class="row" id="cardDiv"></div>
+
+<div class="row col-5 m-1 mx-auto" id="button_holder"></div>
+
+
+
   <script src="main.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script src="jquery/jquery.slim.min.js"></script>
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+  <link href="table.css" rel="stylesheet"></script>
   
+  <link href="tabulator/dist/css/tabulator.min.css" rel="stylesheet"></script>
+  <link href="tabulator/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet"></script>
+  <script type="text/JavaScript" src="tabulator/dist/js/tabulator.min.js"></script>
+  <script type="text/jQuery"src="jquery-3.4.1.min.js"></script>
+  <script type="text/jQuery" src="tabulator/dist/js/jquery_wrapper.min.js"></script>
+ 
+  <script src="table.js">
+  /*
+           //define sample data
+    var tableData = [
+            {
+                "id": 1,
+                "couple": false,
+                "beds": 3,
+                "bookings": 1,
+                "price": 45
+            },
+            {
+              "id": 2,
+                "couple": true,
+                "beds": 1,
+                "bookings": 0,
+                "price": 65.5
+            },
+            {
+              "id": 3,
+                "couple": false,
+                "beds": 4,
+                "bookings": 4,
+                "price": 35.5
+            }
+        ];
+   var tabuTable = new Tabulator("#room-table",{     
+
+        data: tableData,
+        autoColumns: false,
+        layout:"fitColumns", 
+  
+        selectable: true,
+      
+        selectableCheck:function(row){
+        //row - row component
+        return row.getData().bookings < row.getData().beds; //allow selection of rows where the age is greater than 18
+    },
+      
+     
+      columns: [
+        { title: "Room ID", field: "id",  align: "center", sorter:"number", },
+        { title: "Couple", field: "couple",  align: "center" },
+        { title: "Beds", field: "beds", align: "center"},
+        { title: "Bookings", field: "bookings", align: "center" },
+        { title: "Price(€)", field: "price",  align: "center", sorter:"number" },
+       
+    ], 
+     
+    
+    });
+
+  var totalPrice = function(){
+    console.log(sum);
+    var rows = tabuTable.getSelectedRows();
+    let sum = 0;
+    for(let i = 0; i<rows.length; i++){
+      sum+=rows[i].getData().price;
+    }
+   
+    return sum;
+  }
+
+  $("#download-button").on("click", function(){
+    var rows = tabuTable.getSelectedRows();
+    let sum = 0;
+    for(let i = 0; i<rows.length; i++){
+      sum+=rows[i].getData().price;
+    }
+   var total = '€'+sum;
+    $("#display").val(total);
+       // $("#utopian-table").tabulator("download", "csv", "Tabulator Sample Download.csv");
+    });
+    //load sample data into the table
+    //  $("#room-table").table("setData", tableData);    
+      */
+      </script>  
+
 </body>
 
 </html>
