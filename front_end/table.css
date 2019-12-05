@@ -5,9 +5,23 @@
     font-family:Helvetica;
   }
 
-#calculate-button{
+.btn-lg{
  
+    width: 105px;
     position:relative;
-left:    0;
-bottom:   0;
+    margin-left: 5px;
+    margin-right: 1px;
+    margin-top: 6px;
+  
   }
+
+  #display{
+    height: 50px;
+    position:relative;
+    margin-left: 5px;
+    margin-right: 1px;
+    margin-top: 6px;
+  
+  }
+
+
