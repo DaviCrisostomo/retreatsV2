@@ -5,7 +5,7 @@ const { DateTime } = require("luxon");
 function integerChecker(req, res, next) {
     const id = req.params.id
     if (!Number.isInteger(parseInt(id))) {
-        res.status(400).json({ message: 'ID value has to be an integer' })
+        res.status(400).json({ message: 'Id value has to be an integer' })
     } else {
         next()
     }
@@ -19,6 +19,11 @@ const dateValidation = (date) => {
   
 }
 
+const textValidation = (minSize, maxSize, strg)=>{
+    
+   return strg.length<maxSize&&strg.length>minSize
+}
+/*
 const nameValidation = (name) => {
 
     const reg = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
@@ -26,20 +31,20 @@ const nameValidation = (name) => {
     return reg.test(name)
 
 }
+*/
 
-
-const validateEmail = (email) => {
+const validateEmail = (contactMail) => {
     
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    return reg.test(email)
+    return reg.test(contactMail)
 
 }
 
-const contactsValidation = (array) => {
+const roomsValidation = (array) => {
 
     for (i = 0; i < array.length; i++) {
-        if (!nameValidation(array[i].name) || !validateEmail(array[i].email)) {
+        if (!typeof array[i].couple === "boolean"||!Number.isInteger(parseInt(array[i].beds))||!Number.isInteger(parseInt(array[i].bookings))||array[i].beds<array[i].bookings) {
             return false
         }
     }
@@ -48,18 +53,31 @@ const contactsValidation = (array) => {
 
 function checkRequiredFields(req, res, next) {
 
-    const { date, location, contacts } = req.body
+    const { title, date, duration, description, contactMail, rooms} = req.body
 
-    if (!location.country || !location.city || !location.address) {
-        res.status(400).json({ message: 'Location fields can\'t be null' })
+     if (!textValidation(10,25,title)) {
+        res.status(400).json({ message: 'Title has to have at least 10 and max of 25 characters' })
     }
-    else if (!dateValidation(date.arrival) && !dateValidation(date.departure)) {
+    else if (!dateValidation(date)) {
         res.status(400).json({ message: 'Date format is not valid' })
     }
 
-    else if (!contactsValidation(contacts)) {
-        res.status(400).json({ message: 'One or more contact fields missing information or in wrong format' })
+    else if(!Number.isInteger(parseInt(duration))||duration<=0){
+        res.status(400).json({ message: 'Duration hos to be greater than zero' })
     }
+
+    else if (!textValidation(30,150,description)) {
+        res.status(400).json({ message: 'Description has to have at least 30 and max of 150 characters' })
+    }
+    else if (!validateEmail(contactMail)) {
+        console.log(description)
+        res.status(400).json({ message: 'E-mail missing or in worng format' })
+    }
+    else if (!roomsValidation(rooms)) {
+      
+        res.status(400).json({ message: 'Rooms is in worng format' })
+    }
+
     else {
         next()
     }

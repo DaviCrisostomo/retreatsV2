@@ -1,3 +1,5 @@
+
+
 #room-table{
     width:100%;  
    
@@ -5,23 +7,31 @@
     font-family:Helvetica;
   }
 
+
 .btn-lg{
  
-    width: 105px;
-    position:relative;
-    margin-left: 5px;
-    margin-right: 1px;
+    width: 110px;
+  /*  position:relative;
+   
+    margin-right: 1px;*/
+    margin-left: 2px;
     margin-top: 6px;
   
   }
 
   #display{
     height: 50px;
+    width: 110px;
     position:relative;
-    margin-left: 5px;
-    margin-right: 1px;
+    margin-left: 4px;
+    margin-right: 4px;
     margin-top: 6px;
   
   }
 
+  .beditor{
+    height:25px;
+    width:55px;
+    margin-top: 6px;
+}
 

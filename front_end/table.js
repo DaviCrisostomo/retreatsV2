@@ -82,7 +82,7 @@ function createTable(retreat) {
    
   });
 
-  $("#cardDiv").on("click", "#delete-button", function () {
+  $("#cardDiv").on("click", "#exclude-button", function () {
     
     var rows = tabuTable.getSelectedRows();
    
@@ -94,17 +94,35 @@ function createTable(retreat) {
 
   $("#cardDiv").on("click", "#confirm-button", function (){
     var roomsArray = tabuTable.getData();
+  /*
+    retreat.title={"title":String}
+    retreat.data={"data":String}
+    retreat.description={"description":String}
+    */
+    var otherFields = document.getElementsByName("jsonField");
+  
+    retreat.title = otherFields[0].childNodes[0].data
+    retreat.contactMail = otherFields[1].childNodes[0].data
+    retreat.date =  otherFields[2].childNodes[0].data
+    retreat.duration = otherFields[2].lastChild.lastElementChild.firstChild.data
+    retreat.description = otherFields[3].childNodes[0].data
    
     retreat.rooms=[{"couple": Boolean, "beds": Number, "bookings": Number, "price": Number }];
    
     for(let i =0; i<roomsArray.length;i++){
       retreat.rooms[i] = { "couple": roomsArray[i].couple, "beds": roomsArray[i].beds, "bookings": roomsArray[i].bookings, "price": roomsArray[i].price };
     }
-    updateRooms();
+    update();
 
   });
 
-  function updateRooms(){
+  $("#cardDiv").on("click", "#delete-button", function (){
+    
+    deleteRetreat(retreat.id);
+
+  });
+
+  function update(){
     updateRetreat(retreat);
   }
 
