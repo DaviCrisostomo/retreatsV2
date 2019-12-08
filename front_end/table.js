@@ -112,6 +112,7 @@ function createTable(retreat) {
     for(let i =0; i<roomsArray.length;i++){
       retreat.rooms[i] = { "couple": roomsArray[i].couple, "beds": roomsArray[i].beds, "bookings": roomsArray[i].bookings, "price": roomsArray[i].price };
     }
+    
     update();
 
   });

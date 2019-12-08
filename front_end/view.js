@@ -5,23 +5,26 @@ function retreatsGrid(retreatArray) {
     
     for (let i = 0; i < retreatArray.length; i++) {
       div.innerHTML += `
-                      <div class="card col-4 m-3 mx-auto" onclick=getRetreat(${retreatArray[i].id})>
-                          <img class="card-img-top" src="img/_meditation.png"/>
+                      <div class="card col-4 m-3 mx-auto"  onclick=getRetreat(${retreatArray[i].id})>
+                      
+                          <img class="card-img-top" style="height:429px; width:572px;object-fit:cover"  src="${retreatArray[i].imgUrl==""?"img/_meditation.png":retreatArray[i].imgUrl}"/>
+                       
                           <div class="card-body">
                               <h5 class="card-title">${retreatArray[i].title }</h5>
                               <p class="card-info">${retreatArray[i].date}</p>
                           </div>
                       </div>
+                     
                       `                  
         }
      
   }
 
   function showRetreat(retreat) {
- 
+
         div.innerHTML = `
         <div class="card col-5 m-1 mx-auto">
-       <img class="card-img-top" src="img/_meditation.png" />
+       <img class="card-img-top" src="${retreat.imgUrl==""?"img/_meditation.png":retreat.imgUrl}" />
        <div class="card-body" >
         <h3 class="card-title" name="jsonField" id="title" contentEditable = "true">${retreat.title}</h3>
         <h6 class="card-title" name="jsonField" id="mail" contentEditable = "true">${retreat.contactMail}</h3>
@@ -56,7 +59,7 @@ function newRetreatForm(){
  <input type="number" required id="fDuration" placeholder="event duration">
  <input type="text" required id="fDescription" maxlength="150" minlength="30" placeholder="Event description"><br>
  <input type="email" required id="fEmail" placeholder="Email">
-
+ <input type="url"  id="fImage" placeholder="Image">
  <input type="submit" onclick="submitForm()" class="button btn-lg float-right" value="Submit">
 </form> 
 </div>
@@ -75,7 +78,7 @@ function insertAbout() {
 
 function submitForm(){
 
-    var retreat = {"title":String,"date":String,"duration":Number,"description":String, "contactMail":String, "rooms":[{"couple": Boolean, "beds": Number, "bookings": Number, "price": Number }]}
+    var retreat = {"title":String,"date":String,"duration":Number,"description":String, "contactMail":String, "imgUrl":String, "rooms":[{"couple": Boolean, "beds": Number, "bookings": Number, "price": Number }]}
    
 
     retreat.title=document.getElementById("fTitle").value;
@@ -83,10 +86,18 @@ function submitForm(){
     retreat.duration=document.getElementById("fDuration").value;
     retreat.description=document.getElementById("fDescription").value;
     retreat.contactMail=document.getElementById("fEmail").value;
+    retreat.imgUrl=checkURL(document.getElementById("fImage").value);
     retreat.rooms=[{"couple": true, "beds": 1, "bookings": 0, "price": 0 }];
 
     createRetreat(retreat)
 
+}
+
+function checkURL(url) {
+    if(url.match(/\.(jpeg|jpg|gif|png)$/)){
+    return url
+    }
+    return "";
 }
 
 

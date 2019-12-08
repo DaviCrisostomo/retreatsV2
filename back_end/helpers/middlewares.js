@@ -21,17 +21,13 @@ const dateValidation = (date) => {
 
 const textValidation = (minSize, maxSize, strg)=>{
     
-   return strg.length<maxSize&&strg.length>minSize
+   return strg.length<=maxSize&&strg.length>=minSize
 }
-/*
-const nameValidation = (name) => {
 
-    const reg = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
-
-    return reg.test(name)
-
+function checkURL(url) {
+    
+    return url.match(/\.(jpeg|jpg|gif|png)$/);
 }
-*/
 
 const validateEmail = (contactMail) => {
     
@@ -53,9 +49,13 @@ const roomsValidation = (array) => {
 
 function checkRequiredFields(req, res, next) {
 
-    const { title, date, duration, description, contactMail, rooms} = req.body
+    const { title, date, duration, description, contactMail,imgUrl, rooms} = req.body
 
-     if (!textValidation(10,25,title)) {
+    if(title==null||date==null||duration==null||description==null){
+        res.status(400).json({ message: 'Required fields can not be null' })
+    }
+
+    else if (!textValidation(10,25,title)) {
         res.status(400).json({ message: 'Title has to have at least 10 and max of 25 characters' })
     }
     else if (!dateValidation(date)) {
@@ -73,9 +73,14 @@ function checkRequiredFields(req, res, next) {
         console.log(description)
         res.status(400).json({ message: 'E-mail missing or in worng format' })
     }
-    else if (!roomsValidation(rooms)) {
+    else if (rooms!=null&&!roomsValidation(rooms)) {
       
         res.status(400).json({ message: 'Rooms is in worng format' })
+    }
+
+    else if (imgUrl!=""&&!checkURL(imgUrl)) {
+    
+        res.status(400).json({ message: 'Link has to point to an image' })
     }
 
     else {
