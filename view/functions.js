@@ -30,10 +30,7 @@ function checkURL(url) {
     return "";
 }
 //inserting the pdg file for the about session
-function insertAbout() {
 
-    div.innerHTML = `<embed src="IWA CA2 descriptor.pdf" type="application/pdf" width="100%" height="600px" />`
-  }
  //this is old. I don't know why I did in this way, but it takes the retreat object
  //and sends to the table.js function to create a table 
   function fafafunction(retreat) {

@@ -135,7 +135,10 @@ function newRetreatForm(){
 
 }
 
+function insertAbout() {
 
+  div.innerHTML = `<embed src="./docs/davi2017322.pdf" type="application/pdf" width="100%" height="600px" />`
+}
 
 
 
