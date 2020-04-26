@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:true}))
 app.use(require('./routes'));
-
+app.use(express.static('view'));
 app.listen(port, function(err){
   
     console.log("Listening on Port: " + port)
