@@ -5,7 +5,7 @@ mongoose = require('mongoose');
 require('dotenv').config()
 const morgan = require('morgan')
 var app = express();
-var port = 3000;//fuser -k 8080/tcp
+var port = process.env.PORT || 3000;//fuser -k 8080/tcp
 // Morgan
 app.use(morgan('tiny'))
 //route
