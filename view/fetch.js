@@ -9,7 +9,7 @@ div.onload = getRetreats();
 
 function getRetreats() {
   
-    fetch('/retreat')
+    fetch('http://localhost:3000/retreat')
       .then((res) => {
        
         return res.json();
@@ -26,7 +26,7 @@ function getRetreats() {
   }
 
   function getRetreat(id) {
-    fetch('/retreat/' + id)
+    fetch('http://localhost:3000/retreat/' + id)
       .then((res) => {
         return res.json();
       }).then((retreat) => {
@@ -43,7 +43,7 @@ function getRetreats() {
 
     var data = JSON.stringify(retreat);
    
-  fetch("/retreat/", {
+  fetch("http://localhost:3000/retreat/", {
     "method": "POST",
     "headers": {
       "content-type": "application/json"
@@ -61,7 +61,7 @@ function getRetreats() {
   function updateRetreat(retreat) {
     var data = JSON.stringify(retreat);
   
-    fetch("/retreat/" + retreat._id, {
+    fetch("http://localhost:3000/retreat/" + retreat._id, {
       "method": "PUT",
       "headers": {
         "content-type": "application/json"
@@ -77,7 +77,7 @@ function getRetreats() {
   }
 
   function deleteRetreat(id){
-    fetch("/retreat/"+id, {
+    fetch("http://localhost:3000/retreat/"+id, {
     "method": "DELETE",
     "headers": {}
   })
