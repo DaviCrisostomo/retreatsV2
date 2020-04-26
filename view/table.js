@@ -1,4 +1,8 @@
-
+/*
+Methods for implement Tabulator on the page. The Tabulator table itself will be used
+to edit the rooms only.
+*/
+//filling the table with the data
 function setTableData(rooms) {
   var tableData = [{ "id": Number, "couple": Boolean, "beds": Number, "bookings": Number, "price": Number }];
   for (let i = 0; i < rooms.length; i++) {
@@ -6,7 +10,7 @@ function setTableData(rooms) {
   }
  return tableData;
 }
-
+//defining the table columns and oder attributes
 function createTable(retreat) {
   var tabuTable = new Tabulator("#room-table", {
 
@@ -61,7 +65,7 @@ function createTable(retreat) {
 
 
   });
-
+//function to calculate the price of the selected rows
   $("#cardDiv").on("click", "#calculate-button", function () {
     var rows = tabuTable.getSelectedRows();
     let sum = 0;
@@ -72,7 +76,7 @@ function createTable(retreat) {
     $("#display").val(total);
 
   });
-
+//creating a new row which reffers to a new room
   $("#cardDiv").on("click", "#create-button", function () {
     
     let rowSize = tabuTable.getData().length+1;
@@ -81,7 +85,7 @@ function createTable(retreat) {
     tabuTable.addRow(Object.assign({}, defaults));
    
   });
-
+//excluding a selected or multiple row/room
   $("#cardDiv").on("click", "#exclude-button", function () {
     
     var rows = tabuTable.getSelectedRows();
@@ -91,14 +95,12 @@ function createTable(retreat) {
     }
   //turnTableIntoJson();
   });
-
+//Updating the retreat after changing the fields. But here all field
+//from the object retreat are included - not only rooms
   $("#cardDiv").on("click", "#confirm-button", function (){
     var roomsArray = tabuTable.getData();
-  /*
-    retreat.title={"title":String}
-    retreat.data={"data":String}
-    retreat.description={"description":String}
-    */
+
+
     var otherFields = document.getElementsByName("jsonField");
  
     retreat.title = otherFields[0].childNodes[0].data
@@ -124,13 +126,13 @@ function createTable(retreat) {
     update();
   }
   });
-
+//Deleting a retreat
   $("#cardDiv").on("click", "#delete-button", function (){
     
     deleteRetreat(retreat._id);
     location.reload();
   });
-
+//send the retreat to update method
   function update(){
     updateRetreat(retreat);
     showRetreat(retreat);
