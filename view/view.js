@@ -16,7 +16,7 @@ function retreatsGrid(retreatArray) {
       div.innerHTML += `
                       <div class="card col-3 m-1 mx-auto text-center"  onclick=getRetreat(${id})>
                       
-                          <img class="card-img-top " style="height:187.5px; width:250px;object-fit:cover;margin-left: auto;margin-right: auto;"  src="${retreatArray[i].imgUrl==""?"img/_meditation.png":retreatArray[i].imgUrl}"/>
+                          <img class="card-img-top " style="height:187.5px; width:250px;object-fit:cover;overflow: hidden; margin-left: auto;margin-right: auto;"  src="${retreatArray[i].imgUrl==""?"img/_meditation.png":retreatArray[i].imgUrl}"/>
                        
                           <div class="card-body">
                               <h5 class="card-title">${retreatArray[i].title }</h5>
