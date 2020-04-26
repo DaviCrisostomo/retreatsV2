@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+//schema for mongo db
 var retreatSchema = new mongoose.Schema({ 
 
     //id: {type: mongoose.Schema.Types.ObjectId, index: true, unique:true, auto: true}, //root element
