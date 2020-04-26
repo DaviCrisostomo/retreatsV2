@@ -1,4 +1,4 @@
-
+//taking alll values from the form to create a new retreat
 function formCreate(){
     
     var retreat = getJsonModel()
@@ -15,30 +15,31 @@ function formCreate(){
 
 
 }
-
+//the json model for the object retreat
 function getJsonModel(){
 
     var jsonModel = {"title":String,"date":String,"duration":Number,"description":String, "contactMail":String, "imgUrl":String, "rooms":[{"couple": Boolean, "beds": Number, "bookings": Number, "price": Number }]}
     return jsonModel;
 
 }
-
+//checking if url points to an image
 function checkURL(url) {
     if(url.match(/\.(jpeg|jpg|gif|png)$/)){
     return url
     }
     return "";
 }
-
+//inserting the pdg file for the about session
 function insertAbout() {
 
     div.innerHTML = `<embed src="IWA CA2 descriptor.pdf" type="application/pdf" width="100%" height="600px" />`
   }
-  
+ //this is old. I don't know why I did in this way, but it takes the retreat object
+ //and sends to the table.js function to create a table 
   function fafafunction(retreat) {
     createTable(retreat);
   }
-
+//mongodb works with a date format that is horrible and I'm cleaning it to get only the portion correponding to the date, not time
   function cleanDate(str){
 
     var date = str
@@ -46,7 +47,9 @@ function insertAbout() {
   }
 
  
-
+//a function to check if all values sent by the UPDATE page are correct
+//each method responsible for checking a specifc field send back a error message if
+//something went wrong
 function checkUpdateFields(retreat) {
 
     var title = retreat.title
@@ -92,25 +95,25 @@ function checkUpdateFields(retreat) {
     }
 
 }
-
+//checking if the updated date is as expected
 const dateValidation = (date) => {
    
     const reg = /(\d{4})-(\d{2})-(\d{2})/
     return reg.test(date)//"2017-05-15"=> May 15, 2017 at midnight
   
 }
-
+//checking if the text fields like title or description respect the rules
 const textValidation = (minSize, maxSize, strg)=>{
   
    return strg.length<=maxSize&&strg.length>=minSize
 }
-
+//check if url points to an image
 function checkURLA(url) {
     
     return url.match(/\.(jpeg|jpg|gif|png)$/);
 }
 
-
+//checking if email format is correct
 const validateEmail = (contactMail) => {
     
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -118,11 +121,10 @@ const validateEmail = (contactMail) => {
     return reg.test(contactMail)
 
 }
-
+//if something goes wrong, show the error in the page
 function insertErrMsg(str){
 
     document.getElementById('errMsg').innerHTML='<b>'+str+'</b>'; 
   setTimeout(function() {document.getElementById('errMsg').innerHTML='';},5000);
-  
-  //<div id='errMsg' style="fontWeight = 'bold'"></div>
+ 
   }
