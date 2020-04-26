@@ -1,6 +1,7 @@
 var Retreat = require('./models/retreat');
 var check = require('./helpers/middlewares')
-
+//CRUD methods used by the server to retrieve from
+//and insert data in the database
 exports.createRetreat = function(req, res) { 
     
     var newRetreat = new Retreat(req.body);
