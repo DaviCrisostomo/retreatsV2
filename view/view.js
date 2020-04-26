@@ -1,8 +1,10 @@
-
+/*
+The views.js inserts new html elements in the homepage by requests sent by buttons or functions
+*/ 
 var div = document.getElementById("cardDiv")
 var createDiv = document.getElementById("createDiv")
 
-
+//creating the grid for the home page
 function retreatsGrid(retreatArray) {
 
     newRetreatForm()
@@ -27,7 +29,9 @@ function retreatsGrid(retreatArray) {
      
   }
 
-
+//show a single retreat for the edit page
+//the table for the rooms will be created by the table.js
+//all others attributes are set as editable
   function showRetreat(retreat) {
 
         
@@ -82,7 +86,7 @@ function retreatsGrid(retreatArray) {
        //
         fafafunction(retreat);
   }
-
+//the form will be shown beside the grid
 function newRetreatForm(){
  
  createDiv.innerHTML = ` 
