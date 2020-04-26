@@ -9,7 +9,7 @@ div.onload = getRetreats();
 
 function getRetreats() {
   
-    fetch('http://localhost:3000/retreat')
+    fetch('retreat')
       .then((res) => {
        
         return res.json();
