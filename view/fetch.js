@@ -1,3 +1,8 @@
+/*
+CRUD methods for the retreat objects fetching http://localhost:3000/retreat/
+
+*/
+
 var div = document.getElementById("cardDiv")
 div.onload = getRetreats();
 
